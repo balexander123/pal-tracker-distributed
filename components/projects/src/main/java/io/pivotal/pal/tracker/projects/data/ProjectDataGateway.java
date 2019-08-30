@@ -10,7 +10,6 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
 
-import static io.pivotal.pal.tracker.projects.data.ProjectRecord.projectRecordBuilder;
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 @Repository
@@ -60,7 +59,7 @@ public class ProjectDataGateway {
 
 
     private RowMapper<ProjectRecord> rowMapper =
-        (rs, num) -> projectRecordBuilder()
+        (rs, num) -> ProjectRecord.projectRecordBuilder()
             .id(rs.getLong("id"))
             .accountId(rs.getLong("account_id"))
             .name(rs.getString("name"))
